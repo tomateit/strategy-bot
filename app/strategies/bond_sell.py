@@ -19,6 +19,10 @@ async def bond_sell():
             if position.instrument_type == ti.InstrumentType.bond:
                 bond_positions[position.figi] = position
 
+        if len(bond_positions) == 0:
+            print("You have no bond positions")
+            raise RuntimeError("NO BOND POSITIONS")
+
         for bond_position in bond_positions.values():
             print(bond_position.name)
             print(bond_position.instrument_type)
